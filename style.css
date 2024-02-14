@@ -226,6 +226,12 @@ nav li a:hover {
     margin-left: 10%;
 }
 
+.delete-icon {
+    color: red;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
 @media (max-width: 580px) {
     #produkte {
         width: 150%;

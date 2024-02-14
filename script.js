@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateSummaryTile();
     updateProductSales();
     addSubmitOrderEventListener();
+    addRemoveIcons();
 });
 
 function addSubmitOrderEventListener() {
@@ -19,24 +20,31 @@ function addToOrder(event) {
         const orderList = document.getElementById('order-list');
 
         const listItem = document.createElement('div');
-        listItem.textContent = itemName + ' - ' + itemPrice + '€';
+        listItem.classList.add('order-item');
+        listItem.setAttribute('data-price', itemPrice); // Setze den Preis als Attribut für das Element
+        listItem.innerHTML = `<span class="delete-icon" onclick="removeOrderItem(this)">&#10060;</span>${itemName} - ${itemPrice}€`;
+
         orderList.appendChild(listItem);
 
         updateTotalPrice(itemPrice);
     }
 }
 
-function updateTotalPrice(price) {
-    const totalPriceElement = document.getElementById('total-price');
-    const currentTotalPrice = parseFloat(totalPriceElement.textContent.replace('Gesamtpreis: ', '').replace('€', ''));
-    const newTotalPrice = currentTotalPrice + price;
-    totalPriceElement.textContent = newTotalPrice.toFixed(2) + '€';
+function removeOrderItem(icon) {
+    const orderItem = icon.parentElement;
+    const orderList = document.getElementById('order-list');
+    const price = parseFloat(orderItem.getAttribute('data-price'));
+    orderList.removeChild(orderItem);
+    updateTotalPrice(-price);
 }
 
 function submitOrder() {
     const orderList = document.getElementById('order-list');
     const totalOrderPrice = document.getElementById('total-price').textContent;
-    const items = Array.from(orderList.children).map(item => item.textContent);
+    const items = Array.from(orderList.children).map(item => {
+        const text = item.textContent.split(' - ')[1].trim(); // Entferne das "X" aus dem Text
+        return text;
+    });
 
     const newOrder = document.createElement('div');
     newOrder.classList.add('order');
@@ -63,6 +71,26 @@ function submitOrder() {
 
     saveOrderToLocalStorage(newOrder.innerHTML);
     updateProductSales();
+}
+
+function addRemoveIcons() {
+    const orderItems = document.querySelectorAll('.order-item');
+    orderItems.forEach(item => {
+        const deleteIcon = document.createElement('span');
+        deleteIcon.classList.add('delete-icon');
+        deleteIcon.innerHTML = '&#10060;';
+        deleteIcon.onclick = function() {
+            removeOrderItem(deleteIcon);
+        };
+        item.insertBefore(deleteIcon, item.firstChild);
+    });
+}
+
+function updateTotalPrice(price) {
+    const totalPriceElement = document.getElementById('total-price');
+    const currentTotalPrice = parseFloat(totalPriceElement.textContent.replace('Gesamtpreis: ', '').replace('€', ''));
+    const newTotalPrice = currentTotalPrice + price;
+    totalPriceElement.textContent = newTotalPrice.toFixed(2) + '€';
 }
 
 function saveOrderToLocalStorage(orderHTML) {
@@ -128,11 +156,14 @@ function updateProductSales() {
         const orderItems = order.querySelectorAll('ul li');
 
         orderItems.forEach(item => {
-            const itemName = item.textContent.split(' - ')[0].trim();
-            if (productSales[itemName]) {
-                productSales[itemName]++;
-            } else {
-                productSales[itemName] = 1;
+            const itemName = item.textContent.split(' - ')[1];
+            if (itemName) {
+                const productName = itemName.trim();
+                if (productSales[productName]) {
+                    productSales[productName]++;
+                } else {
+                    productSales[productName] = 1;
+                }
             }
         });
     });
