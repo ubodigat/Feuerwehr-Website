@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" href="/picture/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/picture/favicon.ico" />
+    <title>Zahlsystem | Feuerwehr Buchenberg</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div id="header-content">
+                <a id="header-logo" href="/index.html">
+                    <img src="/picture/Buchenberg_Wappen.png" alt="Buchenberg Wappen">
+                </a>
+                <div id="header-text">
+                    <a id="header-title" href="https://www.feuerwehr-buchenberg.de/" target="_blank">Feuerwehr Buchenberg</a>
+                    <p id="header-subtitle">Zahlsystem</p>
+                </div>
+            </div>
+            <nav>
+                <li><a href="/zahlsystem/bestellungen.html">🧾 Bestellungen</a></li>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="höhe">
+            <div id="auswahlpro">
+                <section class="menu-section" onclick="addToOrder(event)">
+                    <h2>Essen</h2>
+                    <div class="menu-item" data-name="Burger" data-price="10">Burger <span>• 10€</span></div>
+                    <div class="menu-item" data-name="Pizza" data-price="12">Pizza <span>• 12€</span></div>
+                </section>
+
+                <section class="menu-section" onclick="addToOrder(event)">
+                    <h2>Trinken</h2>
+                    <div class="menu-item" data-name="Cola" data-price="3">Cola <span>• 3€</span></div>
+                    <div class="menu-item" data-name="Smoothie" data-price="5">Smoothie <span>• 5€</span></div>
+                </section>
+            </div>
+            <div id="produkte">
+                <section class="order-section">
+                    <h2>Bestellung</h2>
+                    <div id="order-list"></div>
+                    <p id="total-price">Gesamtpreis: 0€</p>
+                    <button id="submit-order">Bestellung abschicken</button>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="/script.js" defer></script>
+</body>
+
+</html>
