@@ -1,0 +1,7 @@
+{
+    "theme_color": "#9ebfb7",
+    "background_color": "#bfc2c4",
+    "display": "fullscreen",
+    "scope": "/",
+    "start_url": "/index.html"
+}
