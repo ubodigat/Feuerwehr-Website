@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/zahlsystem/style.css">
     <link rel="icon" href="/picture/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="/picture/favicon.ico" />
     <title>Zahlsystem | Feuerwehr Buchenberg</title>
@@ -19,14 +20,12 @@
                     <img src="/picture/Buchenberg_Wappen.png" alt="Buchenberg Wappen">
                 </a>
                 <div id="header-text">
-                    <a id="header-title" href="https://www.feuerwehr-buchenberg.de/" target="_blank" rel="noopener">Feuerwehr Buchenberg</a>
+                    <a id="header-title" href="https://www.feuerwehr-buchenberg.de/" target="_blank">Feuerwehr Buchenberg</a>
                     <p id="header-subtitle">Zahlsystem</p>
                 </div>
             </div>
             <nav>
-                <ul>
-                    <li><a href="/zahlsystem/bestellungen.html">🧾 Bestellungen</a></li>
-                </ul>
+                <li><a href="/zahlsystem/bestellungen.html">🧾 Bestellungen</a></li>
             </nav>
         </div>
     </header>
@@ -34,30 +33,69 @@
     <main class="container">
         <div id="höhe">
             <div id="auswahlpro">
-                <section class="menu-section" onclick="addToOrder(event)">
+                <section class="menu-section">
                     <h2>Essen</h2>
-                    <div class="menu-item" data-name="Burger" data-price="10">Burger <span>• 10€</span></div>
-                    <div class="menu-item" data-name="Pizza" data-price="12">Pizza <span>• 12€</span></div>
+                    <div class="product-list">
+                        <div class="product-tile" data-name="Burger" data-price="10">
+                            <span>Burger</span>
+                            <span class="product-price">10€</span>
+                        </div>
+                        <div class="product-tile" data-name="Pizza" data-price="12">
+                            <span>Pizza</span>
+                            <span class="product-price">12€</span>
+                        </div>
+                    </div>
                 </section>
-
-                <section class="menu-section" onclick="addToOrder(event)">
+                <section class="menu-section">
                     <h2>Trinken</h2>
-                    <div class="menu-item" data-name="Cola" data-price="3">Cola <span>• 3€</span></div>
-                    <div class="menu-item" data-name="Smoothie" data-price="5">Smoothie <span>• 5€</span></div>
+                    <div class="product-list">
+                        <div class="product-tile" data-name="Cola" data-price="3">
+                            <span>Cola</span>
+                            <span class="product-price">3€</span>
+                        </div>
+                        <div class="product-tile" data-name="Smoothie" data-price="5">
+                            <span>Smoothie</span>
+                            <span class="product-price">5€</span>
+                        </div>
+                    </div>
                 </section>
             </div>
             <div id="produkte">
                 <section class="order-section">
                     <h2>Bestellung</h2>
-                    <div id="order-list"></div>
+                    <ul id="order-list" class="order-list"></ul>
                     <p id="total-price">Gesamtpreis: 0€</p>
-                    <button id="submit-order">Bestellung abschicken</button>
+                    <button id="weiter-order">Weiter zur Zahlung</button>
                 </section>
             </div>
         </div>
+        <div id="payment-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close" id="close-modal">&times;</span>
+                <h2>Zahlung & Rückgeld</h2>
+                <div>Zu zahlender Betrag: <b><span id="betrag-modal">0.00</span>€</b></div>
+                <div class="preset-amounts">
+                    <button class="preset-btn" data-amount="5">5€</button>
+                    <button class="preset-btn" data-amount="10">10€</button>
+                    <button class="preset-btn" data-amount="15">15€</button>
+                    <button class="preset-btn" data-amount="20">20€</button>
+                    <button class="preset-btn" data-amount="30">30€</button>
+                    <button class="preset-btn" data-amount="40">40€</button>
+                    <button class="preset-btn" data-amount="50">50€</button>
+                    <button class="preset-btn" data-amount="100">100€</button>
+                </div>
+                <div>
+                    <input id="custom-amount" type="text" inputmode="decimal" min="0" step="0.01" placeholder="Anderer Betrag" autocomplete="off" />
+                    <button class="use-btn" id="use-custom-amount">Eingabe verwenden</button>
+                </div>
+                <div id="rueckgeld-anzeige">Rückgeld: <span id="rueckgeld">0</span>€</div>
+                <button class="submit-btn" id="submit-order">Bestellung abschließen</button>
+            </div>
+        </div>
+        </div>
     </main>
 
-    <script src="/script.js" defer></script>
+    <script src="/zahlsystem/script.js" defer></script>
 </body>
 
 </html>
