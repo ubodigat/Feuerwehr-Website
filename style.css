@@ -4,6 +4,7 @@ body {
     bottom: 0;
     padding: 0;
     background-color: #c7c7c7;
+    -webkit-user-select: none;
     user-select: none;
 }
 
@@ -331,11 +332,35 @@ nav li a:hover {
     height: auto;
     border-radius: 8px;
     margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.178);
 }
 
 #fahrzeug-description {
     font-size: 18px;
     line-height: 1.6;
     color: #555;
+}
+
+.fahrzeug-info img {
+    width: 450px;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+
+#start-uebung-button {
+    margin-top: 20px;
+    margin-left: 45%;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#start-uebung-button:hover {
+    background-color: #0056b3;
 }

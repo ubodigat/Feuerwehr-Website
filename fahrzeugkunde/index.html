@@ -28,8 +28,11 @@
 
     <main>
         <div class="container">
-            <div class="fahrzeug-info" id="fahrzeug-info" style="background-image: url('/picture/fahrzeug.png'); background-position: right 87%; background-size: 40%; background-repeat: no-repeat;">
+            <div class="fahrzeug-info" id="fahrzeug-info">
                 <h2 id="fahrzeug-title">Wähle ein Fahrzeug</h2>
+                <img id="fahrzeug-image" src="" alt="Fahrzeugbild" style="display:none; max-width: 100%; height: auto;">
+                <p id="fahrzeug-description"></p>
+                <button id="start-uebung-button" style="display:none;" onclick="startUebung()">Übungen starten</button>
             </div>
 
             <div class="fahrzeug-list">
@@ -40,7 +43,7 @@
             </div>
         </div>
     </main>
-
+    <script src="/script.js"></script>
 
 </body>
 
