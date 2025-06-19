@@ -83,10 +83,13 @@
 }
 
 #bestellungen-list {
-    width: 140%;
+    width: 100%;
+    max-width: 100vw;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 20px;
+    box-sizing: border-box;
+    padding: 0;
 }
 
 .order {
@@ -96,8 +99,14 @@
     margin-bottom: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    flex: 0 0 calc(50% - 20px);
+    width: 100%;
+    max-width: 480px;
+    min-width: 0;
+    box-sizing: border-box;
     transition: transform 0.3s;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .order:hover {
@@ -144,6 +153,18 @@
         width: 150%;
         margin-top: 0%;
         margin-left: -70%;
+    }
+}
+
+@media (min-width: 800px) {
+    #bestellungen-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    .order {
+        width: calc(50% - 30px);
+        max-width: 540px;
     }
 }
 
@@ -404,10 +425,6 @@ body.modal-open {
 
 .order.edit-mode:hover .delete-order-btn {
     color: #b71c1c;
-}
-
-.order {
-    position: relative;
 }
 
 #confirm-modal .modal-content,
