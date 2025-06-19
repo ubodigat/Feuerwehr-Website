@@ -466,11 +466,3 @@ body.modal-open {
 #confirm-modal .modal-content button {
     margin-bottom: 0;
 }
-
-@media (max-width: 600px) {
-    #confirm-modal .modal-content,
-    .confirm-content {
-        min-width: 220px;
-        padding: 22px 8px 16px 8px;
-    }
-}
