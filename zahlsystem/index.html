@@ -70,11 +70,12 @@
             </div>
         </div>
         <div id="payment-modal" class="modal hidden">
-            <div class="modal-content">
+            <div class="modal-content-one">
                 <span class="close" id="close-modal">&times;</span>
                 <h2>Zahlung & Rückgeld</h2>
                 <div>Zu zahlender Betrag: <b><span id="betrag-modal">0.00</span>€</b></div>
                 <div class="preset-amounts">
+                    <button class="preset-btn" data-amount="1">1€</button>
                     <button class="preset-btn" data-amount="5">5€</button>
                     <button class="preset-btn" data-amount="10">10€</button>
                     <button class="preset-btn" data-amount="15">15€</button>
@@ -88,7 +89,10 @@
                     <input id="custom-amount" type="text" inputmode="decimal" min="0" step="0.01" placeholder="Anderer Betrag" autocomplete="off" />
                     <button class="use-btn" id="use-custom-amount">Eingabe verwenden</button>
                 </div>
-                <div id="rueckgeld-anzeige">Rückgeld: <span id="rueckgeld">0</span>€</div>
+                <div id="rueckgeld-anzeige">
+                    <span id="rueckgeld-text">Rückgeld:</span>
+                    <span id="rueckgeld">0</span>€
+                </div>
                 <button class="submit-btn" id="submit-order">Bestellung abschließen</button>
             </div>
         </div>

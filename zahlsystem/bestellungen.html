@@ -24,6 +24,15 @@
                     <p id="header-subtitle">Bestellungen</p>
                 </div>
             </div>
+            <div id="admin-modal" class="modal hidden">
+                <div class="modal-content-one" style="min-width:350px;min-height:auto;">
+                    <span class="close" id="close-admin-modal" style="right:24px;">&times;</span>
+                    <h2>Verwaltung</h2>
+                    <button id="delete-all-orders" class="submit-btn" style="background:#b71c1c;">Alle Bestellungen löschen</button>
+                    <button id="toggle-edit-mode" class="submit-btn" style="margin-left:14px;">Bearbeitungsmodus <span id="edit-mode-status">deaktiviert</span></button>
+                    <div style="margin-top:14px;color:#a00;">Im Bearbeitungsmodus erscheint bei jeder Bestellung ein rotes X zum Löschen!</div>
+                </div>
+            </div>
             <nav>
                 <li><a href="/zahlsystem/index.html">💸 Prod. auswahl</a></li>
             </nav>
@@ -33,6 +42,9 @@
     <main class="container" id="bestellseite">
         <section id="summary-tile" class="summary-tile">
             <h2>Bestellungsübersicht</h2>
+            <li style="list-style: none;text-decoration: none;">
+                <a href="#" id="admin-btn" title="Verwaltung"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Ic_settings_48px.svg/1200px-Ic_settings_48px.svg.png" alt="Einstellungen" style="width:32px;height:32px;vertical-align:middle;filter:invert(1);"></a>
+            </li>
             <div id="summary-content">
                 <p id="total-orders">Anzahl der Bestellungen: 0</p>
                 <p id="total-amount">Gesamtbetrag: 0€</p>
@@ -44,7 +56,13 @@
         </section>
         <section id="bestellungen-list"></section>
     </main>
-
+    <div id="confirm-modal" class="modal hidden">
+        <div class="modal-content confirm-content">
+            <h3 id="confirm-modal-title">Wirklich löschen?</h3>
+            <button id="confirm-yes" class="submit-btn confirm-btn confirm-danger">Ja, löschen</button>
+            <button id="confirm-no" class="submit-btn confirm-btn">Abbrechen</button>
+        </div>
+    </div>
     <script src="/zahlsystem/script.js" defer></script>
 </body>
 
