@@ -2,6 +2,7 @@ let plusMode = false;
 let confirmCallback = null;
 let confirmTitle = '';
 let confirmMode = '';
+let currentOrder = {};
 document.addEventListener('DOMContentLoaded', function() {
     const adminBtn = document.getElementById('admin-btn');
     const adminModal = document.getElementById('admin-modal');
@@ -118,20 +119,50 @@ function handlePresetAmount(amount) {
 
 
 function addToOrder(name, price) {
+    if (!currentOrder[name]) {
+        currentOrder[name] = { count: 1, price: price };
+    } else {
+        currentOrder[name].count += 1;
+    }
+    renderOrderList();
+}
+
+function removeFromOrder(name) {
+    if (currentOrder[name]) {
+        currentOrder[name].count -= 1;
+        if (currentOrder[name].count <= 0) {
+            delete currentOrder[name];
+        }
+        renderOrderList();
+    }
+}
+
+function renderOrderList() {
     const orderList = document.getElementById('order-list');
-    const listItem = document.createElement('li');
-    listItem.className = 'order-list-item';
-    listItem.innerHTML = `
-        <span class="delete-icon" title="Entfernen">&#10060;</span>
-        <span class="order-product-name">${name}</span>
-        <span class="order-product-price">${price}€</span>
-    `;
-    listItem.querySelector('.delete-icon').onclick = function() {
-        updateTotalPrice(-price);
-        listItem.remove();
-    };
-    orderList.appendChild(listItem);
-    updateTotalPrice(price);
+    orderList.innerHTML = '';
+    let total = 0;
+
+    Object.entries(currentOrder).forEach(([name, obj]) => {
+        const { count, price } = obj;
+        total += price * count;
+
+        const listItem = document.createElement('li');
+        listItem.className = 'order-list-item';
+
+        listItem.innerHTML = `
+            <span class="delete-icon" title="Entfernen">&#10060;</span>
+            <span class="order-product-name">${count > 1 ? count + "x " : ""}${name}</span>
+            <span class="order-product-price">${(price * count).toFixed(2)}€</span>
+        `;
+
+        listItem.querySelector('.delete-icon').onclick = function() {
+            removeFromOrder(name);
+        };
+
+        orderList.appendChild(listItem);
+    });
+
+    document.getElementById('total-price').textContent = 'Gesamtpreis: ' + total.toFixed(2) + '€';
 }
 
 function updateTotalPrice(price) {

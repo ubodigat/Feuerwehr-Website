@@ -366,8 +366,21 @@
     margin: 0 auto 12px auto;
     display: block;
     font-size: 1.06em;
+    border: none;
     padding: 11px 0;
     border-radius: 9px;
+    transition: 0.5s;
+    background: #343a40;
+    color: #ffffff;
+}
+
+.use-btn:hover,
+.submit-btn:hover {
+    transition: 0.5s;
+    background: #343a40;
+    color: #ffffff;
+    font-weight: 600;
+    transform: scale(1.04);
 }
 
 .submit-btn,
@@ -400,12 +413,6 @@
     background: #b8ffb8;
     color: #212121;
     border-color: #48ce48;
-}
-
-.use-btn:hover,
-.submit-btn:hover {
-    background: #218838;
-    transform: scale(1.04);
 }
 
 #custom-amount {
