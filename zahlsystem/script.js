@@ -281,7 +281,8 @@ function submitOrder() {
     if (bestellungenList) {
         displayOrdersFromLocalStorage(getEditModeFromStorage());
     }
-    orderList.innerHTML = '';
+    currentOrder = {};
+    renderOrderList();
     document.getElementById('total-price').textContent = 'Gesamtpreis: 0€';
     closePaymentModal();
     updateProductSales();
@@ -311,18 +312,28 @@ function displayOrdersFromLocalStorage(editMode = false) {
             } else if (order.rueckgeldType === "rueckgeld" && parseFloat(order.rueckgeld) > 0) {
                 rueckgeldInfo = `<p style="color:#337e29;font-weight:normal;margin-top:6px;">Rückgeld: <b>${parseFloat(order.rueckgeld).toFixed(2)}€</b></p>`;
             }
+            const itemsHTML = order.items.map(item => {
+                const match = item.match(/^(.+?)\s*-\s*([0-9.,]+)€$/);
+                if (match) {
+                    return `<li><span>${match[1]}</span><span style="font-weight:600;">${match[2]}€</span></li>`;
+                }
+                return `<li>${item}</li>`;
+            }).join('');
             orderDiv.innerHTML = `
-                <h3>Bestellung (${order.datetime})</h3>
-                <ul>
-                    ${order.items.map(item => `<li>${item}</li>`).join('')}
-                </ul>
-                <p>${order.total}</p>
-                ${rueckgeldInfo}
+                <h3>Bestellung <span style="font-weight:400;color:#888;font-size:.97em">(${order.datetime})</span></h3>
+                <ul>${itemsHTML}</ul>
+                <div class="order-total">${order.total}</div>
+                ${order.rueckgeldType === "fehlbetrag" && parseFloat(order.rueckgeld) > 0
+                    ? `<div class="order-rueckgeld order-fehlbetrag">Fehlbetrag: ${parseFloat(order.rueckgeld).toFixed(2)}€</div>`
+                    : order.rueckgeldType === "rueckgeld" && parseFloat(order.rueckgeld) > 0
+                    ? `<div class="order-rueckgeld">Rückgeld: ${parseFloat(order.rueckgeld).toFixed(2)}€</div>`
+                    : ""
+                }
             `;
         } else {
             orderDiv.innerHTML = order;
         }
-        if(editMode) {
+        if (editMode) {
             const delBtn = document.createElement('button');
             delBtn.className = "delete-order-btn";
             delBtn.innerHTML = "&times;";
@@ -363,38 +374,53 @@ function updateSummaryTile() {
 }
 
 function updateProductSales() {
+    const productSalesList = document.getElementById('product-sales-list');
+    if (!productSalesList) return;
+
     const orders = JSON.parse(localStorage.getItem('orders')) || [];
     const productSales = {};
+
     orders.forEach(order => {
         if (order && typeof order === "object" && Array.isArray(order.items)) {
             order.items.forEach(itemText => {
-                const itemName = itemText.split(' - ')[0].trim();
-                if (productSales[itemName]) {
-                    productSales[itemName]++;
+                const match = itemText.match(/^(\d+)x\s+(.+?)\s*-/);
+                if (match) {
+                    const count = parseInt(match[1], 10);
+                    const product = match[2].trim();
+                    productSales[product] = (productSales[product] || 0) + count;
                 } else {
-                    productSales[itemName] = 1;
+                    const fallbackMatch = itemText.match(/^(.+?)\s*-/);
+                    if (fallbackMatch) {
+                        const product = fallbackMatch[1].trim();
+                        productSales[product] = (productSales[product] || 0) + 1;
+                    }
                 }
             });
         } else if (typeof order === "string") {
             const matches = order.match(/<li>([^<]*)<\/li>/g);
             if (matches) {
                 matches.forEach(m => {
-                    const itemName = m.replace(/<li>|<\/li>/g, '').split(' - ')[0].trim();
-                    if (productSales[itemName]) {
-                        productSales[itemName]++;
+                    const itemText = m.replace(/<li>|<\/li>/g, '');
+                    const match = itemText.match(/^(\d+)x\s+(.+?)\s*-/);
+                    if (match) {
+                        const count = parseInt(match[1], 10);
+                        const product = match[2].trim();
+                        productSales[product] = (productSales[product] || 0) + count;
                     } else {
-                        productSales[itemName] = 1;
+                        const fallbackMatch = itemText.match(/^(.+?)\s*-/);
+                        if (fallbackMatch) {
+                            const product = fallbackMatch[1].trim();
+                            productSales[product] = (productSales[product] || 0) + 1;
+                        }
                     }
                 });
             }
         }
     });
-    const productSalesList = document.getElementById('product-sales-list');
-    if (!productSalesList) return;
     productSalesList.innerHTML = '';
     for (const productName in productSales) {
         const listItem = document.createElement('li');
-        listItem.textContent = `${productName}: ${productSales[productName]}`;
+        listItem.textContent = `${productSales[productName]}x ${productName}`;
         productSalesList.appendChild(listItem);
     }
 }
