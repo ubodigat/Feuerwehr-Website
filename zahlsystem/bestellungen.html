@@ -27,7 +27,7 @@
             <div id="admin-modal" class="modal hidden">
                 <div class="modal-content-one" style="min-width:350px;min-height:auto;">
                     <span class="close" id="close-admin-modal" style="right:24px;">&times;</span>
-                    <h2>Verwaltung</h2>
+                    <h2 id="infotext">Verwaltung</h2>
                     <button id="delete-all-orders" class="submit-btn" style="background:#b71c1c;">Alle Bestellungen löschen</button>
                     <button id="toggle-edit-mode" class="submit-btn">Bearbeitungsmodus <span id="edit-mode-status">deaktiviert</span></button>
                     <div style="margin-top:14px;color:#a00;">Im Bearbeitungsmodus erscheint bei jeder Bestellung ein rotes X zum Löschen!</div>
@@ -42,8 +42,10 @@
     <main class="container" id="bestellseite">
         <section id="summary-tile" class="summary-tile">
             <h2>Bestellungsübersicht</h2>
-            <li style="list-style: none;text-decoration: none;">
-                <a href="#" id="admin-btn" title="Verwaltung"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Ic_settings_48px.svg/1200px-Ic_settings_48px.svg.png" alt="Einstellungen" style="width:32px;height:32px;vertical-align:middle;filter:invert(1);"></a>
+            <li id="settings">
+                <a href="#" id="admin-btn" title="Verwaltung">
+                    <img class="settings-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Ic_settings_48px.svg/1200px-Ic_settings_48px.svg.png" alt="Einstellungen" style="width:32px;height:32px;vertical-align:middle;filter:invert(1);">
+                </a>
             </li>
             <div id="summary-content">
                 <p id="total-orders">Anzahl der Bestellungen: 0</p>

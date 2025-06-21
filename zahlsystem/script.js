@@ -268,7 +268,15 @@ function submitOrder() {
         }
     }
     const dateTime = new Date();
-    const formattedDateTime = `${dateTime.toLocaleDateString()} ${dateTime.toLocaleTimeString()}`;
+
+    function pad2(x) { return x.toString().padStart(2, '0'); }
+    const tag = pad2(dateTime.getDate());
+    const monat = pad2(dateTime.getMonth() + 1);
+    const jahr = dateTime.getFullYear();
+    const stunde = pad2(dateTime.getHours());
+    const minute = pad2(dateTime.getMinutes());
+    const sekunde = pad2(dateTime.getSeconds());
+    const formattedDateTime = `${tag}.${monat}.${jahr} ${stunde}:${minute}:${sekunde}`;
     let orderObj = {
         datetime: formattedDateTime,
         items: items,
