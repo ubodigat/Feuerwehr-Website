@@ -29,6 +29,8 @@
 
 #total-price {
     font-weight: bold;
+    margin-top: 8px;
+    margin-bottom: 12px;
     margin-top: 15%;
 }
 
@@ -49,16 +51,35 @@
     font-weight: 550;
 }
 
+.menu-section,
+.order-section,
+#auswahlpro,
+#produkte {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.menu-section {
+    width: 100%;
+    min-width: 320px;
+    max-width: 600px;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 2px 10px #0000001a;
+    margin: 0;
+    transition: transform 0.3s;
+}
+
 .order-section {
-    width: 40%;
-    display: inline-table;
+    width: 100%;
+    min-width: 320px;
+    max-width: 480px;
     background-color: #636363;
     color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    margin-left: 55%;
+    padding: 28px 22px 24px 22px;
+    border-radius: 16px;
+    margin: 0 auto 0 0;
     box-shadow: 0 2px 10px #0000001a;
-    margin-bottom: 20px;
     transition: transform 0.5s;
 }
 
@@ -66,20 +87,28 @@
     transform: scale(1.05);
 }
 
-#produkte {
-    margin-top: -41.5%;
-    margin-left: 15%;
-    width: 80%;
-}
-
-#auswahlpro {
-    width: 90%;
-    margin-top: 5%;
-    margin-left: 20px;
-}
-
 #höhe {
-    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 48px;
+    width: 100%;
+    max-width: 1100px;
+    margin: 40px auto 0 auto;
+    box-sizing: border-box;
+}
+
+#auswahlpro,
+#produkte {
+    flex: 1 1 0;
+    min-width: 300px;
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    gap: 38px;
+    margin: 0;
+    width: 100%;
 }
 
 #bestellungen-list {
@@ -105,8 +134,8 @@
     text-decoration: none;
 }
 
-#settings:hover .settings-icon {
-    transform: scale(1.25) rotate(10deg);
+#settings:hover .settings-icon:hover {
+    transform: rotate(30deg) scale(1.12);
     transition: transform 0.22s cubic-bezier(.61, 1.47, .4, .93);
 }
 
@@ -269,180 +298,6 @@
     margin-top: -2%;
 }
 
-@media (max-width: 900px) {
-    #bestellungen-list {
-        grid-template-columns: 1fr;
-        padding: 14px 2vw 0 2vw;
-        margin-left: -5%;
-        margin-right: 0%;
-    }
-}
-
-@media (max-width: 800px) {
-    #produkte {
-        margin-top: -73.5%;
-    }
-    #bestellungen-list {
-        grid-template-columns: 1fr;
-        padding: 14px 2vw 0 2vw;
-    }
-    .order {
-        max-width: 98vw;
-    }
-}
-
-@media (max-width: 640px) {
-    #produkte {
-        margin-top: -95%;
-    }
-}
-
-@media (max-width: 580px) {
-    #produkte {
-        width: 190%;
-        margin-top: 0%;
-        margin-left: -97%;
-    }
-    #auswahlpro {
-        width: 170%;
-        margin-top: 5%;
-    }
-}
-
-@media (max-width: 430px) {
-    #product-sales-list {
-        padding: 0 4vw;
-        flex-direction: column;
-        gap: 16px;
-    }
-    .product-tile {
-        width: 100%;
-        min-width: 0;
-        max-width: 100vw;
-        padding-left: 12px;
-        padding-right: 12px;
-    }
-    .product-list {
-        gap: 10px;
-    }
-    .order {
-        min-width: 0;
-        max-width: 100%;
-        margin: 0 0 18px 0 !important;
-        border-radius: 12px;
-        box-sizing: border-box;
-        padding: 18px 14px;
-    }
-    .keypad,
-    #custom-keypad {
-        flex-wrap: wrap;
-        justify-content: stretch;
-        gap: 8px;
-    }
-    .modal-content-one,
-    .modal-content {
-        overflow-y: auto !important;
-        min-width: unset !important;
-        width: 97vw !important;
-        max-width: 400px;
-        margin-top: 35% !important;
-        margin-bottom: 5% !important;
-        margin: 0 auto;
-        padding: 18px 8px 16px 8px !important;
-        box-sizing: border-box;
-    }
-    .preset-amounts {
-        flex-wrap: wrap;
-        gap: 8px;
-        justify-content: stretch;
-    }
-    .preset-btn,
-    .use-btn,
-    .submit-btn,
-    .amount-btn,
-    .confirm-btn {
-        width: 100%;
-        min-width: 0;
-        font-size: 1.13em;
-        margin: 6px 0;
-    }
-    #custom-amount {
-        width: 98%;
-        max-width: 98vw;
-    }
-    #bestellungen-list {
-        padding: 0 3vw;
-        gap: 10px;
-    }
-    .order {
-        max-width: 99vw;
-        padding: 16px 6px;
-        margin: 0 0 18px 0 !important;
-        border-radius: 12px;
-        box-sizing: border-box;
-    }
-    #produkte {
-        width: 150%;
-        margin-top: 0%;
-        margin-left: -70%;
-    }
-    #auswahlpro {
-        width: 80%;
-        margin-right: 15px;
-        margin-top: 5%;
-    }
-    .menu-section {
-        width: 95%;
-        margin-bottom: 38px;
-    }
-}
-
-
-/*
-@media (max-width: 360px) {
-    body {
-        overflow-y: hidden !important;
-    }
-    #auswahlpro {
-        width: 130% !important;
-    }
-    .modal-content {
-        margin-top: 350% !important;
-        margin-bottom: 5% !important;
-    }
-    .modal {
-        overflow: auto !important;
-    }
-    .modal-content-one,
-    .modal-content,
-    .confirm-content {
-        margin-top: 60% !important;
-        max-height: 94vh;
-        box-sizing: border-box;
-    }
-    #produkte {
-        width: 150%;
-        margin-top: 0%;
-        margin-left: -70%;
-    }
-    .menu-section {
-        width: 60%;
-    }
-}
-*/
-
-@media (max-width: 420px) {
-    .preset-btn,
-    .submit-btn,
-    .amount-btn,
-    .confirm-btn {
-        width: 100vw;
-        max-width: 97vw;
-        min-width: 0;
-        margin: 6px 0;
-    }
-}
-
 .preset-amounts {
     display: flex;
     flex-wrap: wrap;
@@ -582,10 +437,6 @@
     font-weight: 600;
 }
 
-.menu-section {
-    margin-bottom: 38px;
-}
-
 body.modal-open {
     overflow: hidden;
 }
@@ -645,13 +496,26 @@ body.modal-open {
     border: 1px solid #b9b9b9;
     background: #f8f8f8;
     margin-bottom: 4px;
-    transition: background 0.11s;
+    transition: background 0.15s, color 0.15s, box-shadow 0.15s, transform 0.13s;
+    font-weight: 600;
+}
+
+#custom-keypad button:hover,
+.keypad button:hover {
+    cursor: pointer;
+    background: #a0c2a4;
+    color: #06ff3c;
+    box-shadow: 0 2px 8px #29ed4b50;
+    transform: scale(1.06);
+    z-index: 1;
 }
 
 #custom-keypad button:active,
 .keypad button:active {
-    background: #e0f2f1;
-    color: #22a877;
+    background: #b9fac8;
+    color: #117e22;
+    transform: scale(0.96);
+    box-shadow: 0 1px 3px #31ed5540;
 }
 
 #finish-payment,
@@ -674,7 +538,7 @@ body.modal-open {
 
 .order-list {
     list-style: none;
-    margin: 0;
+    margin: 0 0 -10% 0;
     padding: 0;
 }
 
@@ -786,3 +650,224 @@ body.modal-open {
 #confirm-modal .modal-content button {
     margin-bottom: 0;
 }
+
+@media (max-width: 1200px) {
+    main.container {
+        padding: 12px 6vw 32px 6vw;
+    }
+}
+
+@media (max-width: 950px) {
+    #höhe {
+        flex-direction: column;
+        gap: 30px;
+        align-items: stretch;
+        max-width: 98vw;
+        margin: 20px auto 0 auto;
+        padding: 0 4vw;
+    }
+    #auswahlpro,
+    #produkte {
+        min-width: 0;
+        max-width: 100vw;
+        margin: 0;
+        width: 100%;
+        gap: 30px;
+    }
+    .menu-section,
+    .order-section {
+        max-width: 98vw;
+        min-width: unset;
+        width: 100%;
+        margin: 0 auto 0 auto;
+    }
+}
+
+@media (max-width: 900px) {
+    #bestellungen-list {
+        grid-template-columns: 1fr;
+        padding: 14px 2vw 0 2vw;
+        margin-left: -5%;
+        margin-right: 0%;
+    }
+}
+
+@media (max-width: 650px) {
+    main.container {
+        max-width: 99vw;
+        padding: 0 4vw;
+    }
+    #auswahlpro,
+    #produkte,
+    .menu-section,
+    .order-section {
+        width: 100%;
+        max-width: 99vw;
+        margin: 0 auto 0 auto;
+    }
+    #höhe {
+        gap: 20px;
+        padding: 0;
+        margin: 16px auto 0 auto;
+    }
+}
+
+@media (max-width: 600px) {
+    #höhe {
+        padding: 0 2vw;
+    }
+    main.container {
+        padding: 8px 2vw 18px 2vw;
+    }
+}
+
+@media (max-width: 450px) {
+    .menu-section,
+    .order-section {
+        padding: 14px 4vw 16px 4vw;
+        border-radius: 10px;
+    }
+    #order-list,
+    .order-list {
+        font-size: 1em;
+    }
+    #total-price {
+        font-size: 1.07em;
+    }
+}
+
+@media (max-width: 430px) {
+    main.container {
+        padding: 4px 1vw 10px 1vw;
+    }
+    #product-sales-list {
+        padding: 0 4vw;
+        flex-direction: column;
+        gap: 16px;
+    }
+    .product-tile {
+        width: 100%;
+        min-width: 0;
+        max-width: 100vw;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    .product-list {
+        gap: 10px;
+    }
+    .order {
+        min-width: 0;
+        max-width: 100%;
+        margin: 0 0 18px 0 !important;
+        border-radius: 12px;
+        box-sizing: border-box;
+        padding: 18px 14px;
+    }
+    .keypad,
+    #custom-keypad {
+        flex-wrap: wrap;
+        justify-content: stretch;
+        gap: 8px;
+    }
+    .modal-content-one,
+    .modal-content {
+        overflow-y: auto !important;
+        min-width: unset !important;
+        width: 97vw !important;
+        max-width: 400px;
+        margin-top: 35% !important;
+        margin-bottom: 5% !important;
+        margin: 0 auto;
+        padding: 18px 8px 16px 8px !important;
+        box-sizing: border-box;
+    }
+    .preset-amounts {
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: stretch;
+    }
+    .preset-btn,
+    .use-btn,
+    .submit-btn,
+    .amount-btn,
+    .confirm-btn {
+        width: 100%;
+        min-width: 0;
+        font-size: 1.13em;
+        margin: 6px 0;
+    }
+    #custom-amount {
+        width: 95%;
+        max-width: 98vw;
+    }
+    #bestellungen-list {
+        padding: 0 3vw;
+        gap: 10px;
+    }
+    .order {
+        max-width: 99vw;
+        padding: 16px 6px;
+        margin: 0 0 18px 0 !important;
+        border-radius: 12px;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 420px) {
+    .preset-btn,
+    .submit-btn,
+    .amount-btn,
+    .confirm-btn {
+        width: 90vw;
+        max-width: 97vw;
+        min-width: 0;
+        margin: 6px 0;
+    }
+}
+
+@media (max-width: 380px) {
+    .modal-content-one {
+        margin-top: 120% !important;
+        width: 100%;
+    }
+    #submit-order {
+        width: 80%;
+    }
+    #custom-amount {
+        width: 80%;
+    }
+}
+
+
+/*
+@media (max-width: 360px) {
+    body {
+        overflow-y: hidden !important;
+    }
+    #auswahlpro {
+        width: 130% !important;
+    }
+    .modal-content {
+        margin-top: 350% !important;
+        margin-bottom: 5% !important;
+    }
+    .modal {
+        overflow: auto !important;
+    }
+    .modal-content-one,
+    .modal-content,
+    .confirm-content {
+        margin-top: 60% !important;
+        max-height: 94vh;
+        box-sizing: border-box;
+    }
+    #produkte {
+        width: 150%;
+        margin-top: 0%;
+        margin-left: -70%;
+    }
+    .menu-section {
+        width: 60%;
+    }
+}
+*/

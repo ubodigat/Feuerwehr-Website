@@ -1,10 +1,11 @@
 body {
     font-family: 'Arial', sans-serif;
+    background: #c7c7c7;
+    user-select: none;
     margin: 0;
     bottom: 0;
     padding: 0;
-    background-color: #c7c7c7;
-    user-select: none;
+    overflow-x: hidden !important;
 }
 
 header {
@@ -135,4 +136,24 @@ nav li a:hover {
     background-position: right 89%;
     background-size: 65%;
     background-repeat: no-repeat;
+}
+
+@media (max-width: 1000px) {
+    .hauptmenübutton {
+        margin-left: 2%;
+        margin-right: 2%;
+        padding: 40px 10px;
+        font-size: 25px;
+        width: 90%;
+    }
+}
+
+@media (max-width: 500px) {
+    .hauptmenübutton {
+        margin-left: 2%;
+        margin-right: 2%;
+        padding: 28px 10px;
+        font-size: 20px;
+        width: 90%;
+    }
 }

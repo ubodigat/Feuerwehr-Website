@@ -50,13 +50,13 @@ document.addEventListener('DOMContentLoaded', function() {
             plusBtn.id = 'plus-btn';
             plusBtn.textContent = '+';
             plusBtn.className = 'preset-btn';
-            plusBtn.style.background = '#dbdbdb';
-            plusBtn.style.color = '#2b2b2b';
+            plusBtn.style.background = '#343a40';
+            plusBtn.style.color = '#fff';
             plusBtn.style.fontWeight = 'bold';
             plusBtn.onclick = function() {
                 plusMode = !plusMode;
-                plusBtn.style.background = plusMode ? '#46c546' : '#dbdbdb';
-                plusBtn.style.color = plusMode ? '#fff' : '#2b2b2b';
+                plusBtn.style.background = plusMode ? '#46c546' : '#343a40';
+                plusBtn.style.color = plusMode ? '#fff' : '#fff';
             };
             document.querySelector('.preset-amounts').appendChild(plusBtn);
         }

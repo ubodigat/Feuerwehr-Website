@@ -25,21 +25,21 @@
             </div>
         </div>
     </header>
+    <main>
+        <div class="container">
+            <div class="hauptmenübutton button-zahlsystem" onclick="navigateTo('/zahlsystem/index.html')">
+                <div>
+                    <span>💸 Zahlsystem</span>
+                </div>
+            </div>
 
-    <div class="container">
-        <div class="hauptmenübutton button-zahlsystem" onclick="navigateTo('/zahlsystem/index.html')">
-            <div>
-                <span>💸 Zahlsystem</span>
+            <div class="hauptmenübutton button-fahrzeugkunde" onclick="navigateTo('/fahrzeugkunde/index.html')">
+                <div>
+                    <span>🚒 Fahrzeugkunde</span>
+                </div>
             </div>
         </div>
-
-        <div class="hauptmenübutton button-fahrzeugkunde" onclick="navigateTo('/fahrzeugkunde/index.html')">
-            <div>
-                <span>🚒 Fahrzeugkunde</span>
-            </div>
-        </div>
-    </div>
-
+    </main>
     <script>
         function navigateTo(page) {
             window.location.href = page;
