@@ -111,6 +111,10 @@
     width: 100%;
 }
 
+#auswahlpro {
+    margin-bottom: 2%;
+}
+
 #bestellungen-list {
     width: 100%;
     max-width: 80%;
