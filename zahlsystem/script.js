@@ -426,9 +426,13 @@ function updateProductSales() {
         }
     });
     productSalesList.innerHTML = '';
-    for (const productName in productSales) {
+
+    const sortedSales = Object.entries(productSales)
+        .sort((a, b) => b[1] - a[1]);
+
+    for (const [productName, count] of sortedSales) {
         const listItem = document.createElement('li');
-        listItem.textContent = `${productSales[productName]}x ${productName}`;
+        listItem.textContent = `${count}x ${productName}`;
         productSalesList.appendChild(listItem);
     }
 }
